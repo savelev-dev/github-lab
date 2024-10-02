@@ -1,0 +1,65 @@
+name: CI Workflow
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  ci-workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Set up environment
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y openjdk-8-jre-headless
+        pip3 install pytest pytest-xdist
+        pip3 install zapcli
+
+    - name: Install OWASP ZAP
+      run: |
+        wget https://github.com/zaproxy/zaproxy/releases/download/v2.9.0/ZAP_2.9.0_Linux.tar.gz
+        tar -xvzf ZAP_2.9.0_Linux.tar.gz
+        echo "ZAP_PATH=$PWD/ZAP_2.9.0" >> $GITHUB_ENV
+
+    - name: Use Node.js 18.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: 18.x
+
+    - name: Build Application (SCA)
+      run: npm install
+
+    - name: Run ESLint (SAST)
+      run: npx eslint . --ext .js
+
+    - name: Run app
+      run: |
+        node index.js &
+        npx wait-on http://localhost:3123
+      env:
+        FRONTEND_URL: "http://localhost"
+        JWT_SECRET: "randomstring"
+
+    - name: Start ZAP
+      run: |
+        AUTH_TOKEN=$(curl -XPOST -H 'Content-Type: application/json' "http://localhost:3123/auth/login" -d "{\"username\": \"${{ secrets.USERNAME }}\", \"password\":\"${{ secrets.PASSWORD }}\"}" | jq -r ".token")
+        echo "ZAP_AUTH_HEADER_VALUE=Bearer\ $AUTH_TOKEN" >> $GITHUB_ENV
+        echo "ZAP_AUTH_HEADER=Authorization" >> $GITHUB_ENV
+        $ZAP_PATH/zap.sh -daemon -host 0.0.0.0 -port 8090 -config api.disablekey=true &
+        sleep 30
+
+    - name: Run ZAP scan (DAST
+      run: |
+        zap-cli -p 8090 status -t 120
+        zap-cli -p 8090 -v quick-scan \
+        --spider \
+        "http://localhost:3123/"
+
+    - name: Stop App and ZAP
+      run: |
+        zap-cli -p 8090 shutdown
+        kill $(lsof -t -i:3123)
