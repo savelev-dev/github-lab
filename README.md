@@ -24,7 +24,6 @@
 
 
 # Training Overview
-This lab shows you how to use Terraform to configure an organization, members, teams, and repositories in GitHub. This task is binding to real production needs – for instance, the DevOps team centrally manages the state of the GitHub repositories within their organization.
 
 In this lab, you will learn how to use Terraform to configure and manage a GitHub organization, including its members, teams, and repositories. This exercise addresses real-world production needs, such as enabling a DevOps team to centrally manage the state of GitHub repositories within their organization.
 
