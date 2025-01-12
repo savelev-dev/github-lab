@@ -75,7 +75,7 @@ Change current directory  to `./base`
 Create an organization settings resource with attributes:
 
 -	`billing_email`: `{some email}`
--	`company`: `{Organization Name}`
+-	`company`: `{You org name}`
 -	`description`: `{You org name} organization for github Terraform Lab`
 -	`default_repository_permission`: `"read"`
 -	`members_can_create_repositories`: `false`
