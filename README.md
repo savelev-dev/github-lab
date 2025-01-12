@@ -42,13 +42,13 @@ By the end of this lab, you will have a GitHub organization fully managed by Ter
 
 ## PRE-REQUISITES
 1. Fork current repository. A fork is a copy of a project and this allows you to make changes without affecting the original project.
-2. Create a GitHub organization [refer to this document](https://docs.github.com/ru/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch). Choose a name you find appealing, like `epam-tf-lab-{StudentSurname}`.
+2. Create a GitHub organization [refer to this document](https://docs.github.com/ru/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch). Choose a name you find appealing, like `github-lab`.
   
-    For example, `epam-tf-lab-skywalker`.
+    For example, `github-lab-skywalker`.
 
 3. Create a classic personal access token with full access [refer to this document](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 4. All actions should be done under your fork and Terraform gets it context from your local clone working directory: 
-    - Change current directory to `/tf-epam-lab/non_cloud_task/github/base` folder and create files `root.tf` and `variables.tf`.
+    - Change current directory to `./base` folder and create files `root.tf` and `variables.tf`.
     - In the `variables.tf` create variable `gh_token` without default value. To prevent providing GitHub token on each configuration run and staying secure set binding environment variable:
         ```bash
         export TF_VAR_gh_token={CREATED_PERSONAL_GITHUB_TOKEN}
@@ -64,7 +64,7 @@ By the end of this lab, you will have a GitHub organization fully managed by Ter
 
     Please use **underscore** Terraform resources naming, e.g. `my_resource` instead of `my-resource`.
 
-5. Create directory `/tf-epam-lab/non_cloud_task/github/repos`, change current directory  to `/tf-epam-lab/non_cloud_task/github/repos` and repeat the steps in [2].
+5. Create directory `./repos`, change current directory  to `./repos` and repeat the steps in [2].
 6. Install docker on your laptop.
 
 You are ready for the lab!
@@ -72,13 +72,13 @@ You are ready for the lab!
 # Creating GitHub resources
 
 ## TASK 1 - Create GitHub Organization settings
-Change current directory  to `/tf-epam-lab/non_cloud_task/github/base`
+Change current directory  to `./base`
 
 Create an organization settings resource with attributes:
 
--	`billing_email`: `{Student github account email}`
+-	`billing_email`: `{some email}`
 -	`company`: `{Organization Name}`
--	`description`: `{StudentName} {StudentSurname} organization for EPAM Terraform Lab`
+-	`description`: `{You org name} organization for github Terraform Lab`
 -	`default_repository_permission`: `"read"`
 -	`members_can_create_repositories`: `false`
 -	`members_can_create_public_repositories`: `false`
@@ -116,7 +116,7 @@ The target of this task is to create a GitHub organization secret.
 
 The purpose of a GitHub secret is to securely store and manage sensitive information, such as authentication tokens, encryption keys, and other confidential data, that is needed to use in your GitHub Actions workflows or other integrations. This helps to keep sensitive information secure and avoid exposing it in open source code or in logs.
 
-Ensure that the current directory is `/tf-epam-lab/non_cloud_task/github/base`
+Ensure that the current directory is `./base`
 
 - Create empty variables `username` and `password` but with the following descriptions `Dummy API username` and `Dummy API password`. <br><b><mark>Never store you secrets inside the code!</b></mark>
 - Create a `secrets.tf` file with `github_actions_organization_secret` resources (`visibility="selected"`). Use `username` and `passwords` variables as secret value sources.
@@ -139,7 +139,7 @@ Apply your changes when ready.
 
 ## TASK 3 - Create teams and memberships
 
-Ensure that the current directory is  `/tf-epam-lab/non_cloud_task/github/base`
+Ensure that the current directory is  `./base`
 
 Create a team and team's members for your GitHub organization:
 
@@ -169,7 +169,7 @@ The purpose of this task is to create a security manager for the created GitHub 
 
 GitHub Security Managers is a feature in GitHub that allows an organization to designate specific people as security managers. Security managers have the ability to manage security alerts, perform security triage, and dismiss false positives. This helps organizations to streamline their security processes, ensuring that security issues are addressed efficiently and effectively. Security Managers can be assigned to specific repositories or across an entire organization, providing greater flexibility and control over security management.
 
-Ensure that the current directory is  `/tf-epam-lab/non_cloud_task/github/base`
+Ensure that the current directory is  `./base`
 
 Create a GitHub organization project resource with attributes:
 -   Create add a new team resource (`name="security-team"`, `privacy="closed"`).
@@ -189,11 +189,11 @@ Apply your changes when ready.
 - Push *.tf configuration files to git
 
 ## TASK 5 - Create a Private Repository
-Ensure that the current directory is  `/tf-epam-lab/non_cloud_task/github/base`
+Ensure that the current directory is  `./base`
 
 Create the following repository with attributes:
 - `name`: `"tf-lab-devops"`
-- `description`: `"{StudentName} {StudentSurname}, TF EPAM lab repository for DevOps team"`
+- `description`: `"{OrgName}, repository for DevOps team"`
 - `vulnerability_alerts`: `true`
 - `visibility`: `"private"`
 
@@ -211,7 +211,7 @@ Apply your changes when ready.
 - Push *.tf configuration files to git
 
 ## TASK 6 - Form TF Output
-Ensure that current directory is `/tf-epam-lab/non_cloud_task/github/base`
+Ensure that current directory is `./base`
 
 Create outputs for your configuration:
 
@@ -233,8 +233,8 @@ Apply your changes when ready. You can update outputs without using `terraform a
 
 Learn about [terraform remote state data source](https://www.terraform.io/docs/language/state/remote-state-data.html).
 
-! Change the current directory to  `/tf-epam-lab/non_cloud_task/github/repos`
-! Copy `root.tf` from `/tf-epam-lab/non_cloud_task/github/base` to `/tf-epam-lab/non_cloud_task/github/repos`
+! Change the current directory to  `./repos`
+! Copy `root.tf` from `./base` to `./repos`
 
 Add remote state resources to your configuration to be able to import output resources:
 
@@ -253,13 +253,13 @@ Apply your changes when ready.
 
 ## TASK 8 - Create Secure Public Repositories
 
-Ensure that the current directory is  `/tf-epam-lab/non_cloud_task/github/repos`
+Ensure that the current directory is  `./repos`
 
 Store all resources from this task in the `repository.tf` file.
 
 - Create a repository resource with attributes:
     - `name=tf-lab-app`
-    - `description="TF EPAM lab repository for nodejs app"`,
+    - `description="TF GitHub lab repository for nodejs app"`,
     - `vulnerability_alerts=true`,
     - `visibility="public"`,
     - `has_issues=true`,
@@ -339,20 +339,20 @@ Hint: The purpose of the `terraform state mv` command in Terraform is to move or
 
   From:
   ```
-  resource "github_repository" "tf_epam_lab_base_repository" {
+  resource "github_repository" "tf_github_lab_base_repository" {
     ...
   }
   ```
   To:
   ```
-  resource "github_repository" "tf_epam_lab_devops_repository" {
+  resource "github_repository" "tf_github_lab_devops_repository" {
     ...
   }
   ```
 - Rename the `github_repository` resource by `terraform state mv` command.
 Example:
   ```
-  terraform state mv github_repository.tf_epam_lab_base_repository github_repository.tf_epam_lab_devops_repository
+  terraform state mv github_repository.tf_github_lab_base_repository github_repository.tf_github_lab_devops_repository
   ```
 
 - Run `terraform plan` on both configurations and observe the changes. 
@@ -402,12 +402,12 @@ Learn about the [terraform import](https://www.terraform.io/docs/cli/import/inde
 You are going to import a new resource (repository `tf-lab-spa`) to your state.
 Hint: Keep in mind that there are 3 instances: GitHub resource, Terraform state file which store some state of that resource, and Terraform configuration which describe resource. "Importing a resource" is importing its attributes into a Terraform state. Then you have to add said resource to the destination configuration (this action is not automated).
 
-Ensure that the current directory is  `/tf-epam-lab/non_cloud_task/github/repos`. Use file `imported_repository.tf`.
+Ensure that the current directory is  `./repos`. Use file `imported_repository.tf`.
 
 - Create a public GitHub repository in the created GitHub organization via GitHub WebUI (`name="tf-lab-spa"`).
-- Add a new resource `github_repository` `tf_epam_lab_spa_repository` to the `repos` configuration.
+- Add a new resource `github_repository` `tf_github_lab_spa_repository` to the `repos` configuration.
 - Run `terraform plan` to see your changes but do not apply changes.
-- Import `tf_epam_lab_spa_repository` repository to the `repos` state.
+- Import `tf_github_lab_spa_repository` repository to the `repos` state.
 - Run `terraform plan` again to ensure that import was successful.
 
 **Note**: SPA - Single Page Application
@@ -425,14 +425,14 @@ In this task we are going to use a data driven approach instead to use remote st
 
 #### base configuration
 
-Change the current directory to `/tf-epam-lab/non_cloud_task/github/base`
+Change the current directory to `./base`
 
 Use a data source to request the resource `github_repository`. Use this datasource to request data about the repository which was created in the task 8.
 
 Store all resources from this task in the `data.tf` file.
 
 #### repos configuration
-Change the current directory to `/tf-epam-lab/non_cloud_task/github/repos`
+Change the current directory to `./repos`
 
 Refine your configuration:
 
@@ -490,7 +490,7 @@ In this lab we will configure a GitHub action workflow which performs `SCA`, `SA
   </details>  
 
 
-Ensure that the current directory is  `/tf-epam-lab/non_cloud_task/github/base`
+Ensure that the current directory is  `./base`
 
 All new resources should be written to the file `actions.tf`.
 
@@ -535,7 +535,7 @@ As a result, you should have code of the test REST API added to the newly create
 
 ## TASK 14 - Create dynamically manageable resources
 
-Ensure that the current directory is  `/tf-epam-lab/non_cloud_task/github/base`
+Ensure that the current directory is  `./base`
 
 Make the organization teams memberships management more manageable. In order to do this, for each team create a variable. For instance, for the team `security-team` create a variable:
 ```tf
@@ -611,7 +611,7 @@ Refine your configurations:
   - List of names of the Organizational Secrets
   - List of repositories secrets
 
-Store your modules in `/tf-epam-lab/non_cloud_task/github/modules` subfolders.
+Store your modules in `./modules` subfolders.
 
 Run `terraform validate` and `terraform fmt` to check if your modules are valid and fit to a canonical format and style.
 Run `terraform plan` to see your changes and re-apply your changes if needed.
