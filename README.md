@@ -42,9 +42,7 @@ By the end of this lab, you will have a GitHub organization fully managed by Ter
 
 ## PRE-REQUISITES
 1. Fork current repository. A fork is a copy of a project and this allows you to make changes without affecting the original project.
-2. Create a GitHub organization [refer to this document](https://docs.github.com/ru/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch). Choose a name you find appealing, like `github-lab`.
-  
-    For example, `github-lab-skywalker`.
+2. Create a GitHub organization [refer to this document](https://docs.github.com/ru/organizations/collaborating-with-groups-in-organizations/creating-a-new-organization-from-scratch). Choose a name you find appealing, like `github-lab` or `github-lab-skywalker`.
 
 3. Create a classic personal access token with full access [refer to this document](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
 4. All actions should be done under your fork and Terraform gets it context from your local clone working directory: 
