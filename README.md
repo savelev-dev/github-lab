@@ -54,7 +54,7 @@ By the end of this lab, you will have a GitHub organization fully managed by Ter
     <b><mark>**NOTE**: NEVER store the value of the GitHub token in the repository code.</b></mark>
     - Add a `terraform {}` empty block to the file `root.tf`. In the same file create an GitHub provider block with the following attributes: 
         - `owner = "{organization_name}"`
-        - `token = "var.gh_token"`.
+        - `token = var.gh_token`.
 
     Run `terraform init` to initialize your configuration. 
     Run `terraform validate` and `terraform fmt` to check if your configuration is valid and fits to a canonical format and style. Do this each time before applying your changes.
