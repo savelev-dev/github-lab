@@ -169,9 +169,9 @@ GitHub Security Managers is a feature in GitHub that allows an organization to d
 
 Ensure that the current directory is  `./base`
 
-Create a GitHub organization project resource with attributes:
--   Create add a new team resource (`name="security-team"`, `privacy="closed"`).
--   Create add a new security manager for the organization and assign to the created team.
+Create a GitHub organization resources:
+-   A new team resource (`name="security-team"`, `privacy="closed"`).
+-   A new security manager for the organization and assign it to the created team.
 
 Store all resources from this task in the `security.tf` file.
 
