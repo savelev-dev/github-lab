@@ -1,5 +1,5 @@
-- [Problem to Be Solved](task_github.md#problem-to-be-solved-in-this-lab)
-  * [Explanation of the Solution](task_github.md#explanation-of-the-solution)
+- [Problem to Be Solved](task_github.md#training-overview)
+  * [Explanation of the Solution](task_github.md#solution-approach)
   * [PRE-REQUISITES](task_github.md#pre-requisites)
 - [Creating GitHub resources](task_github.md#creating-github-resources)
   * [TASK 1 - Create GitHub Organization settings](task_github.md#task-1---create-github-organization-settings)
@@ -23,17 +23,22 @@
   
 
 
-# Problem to Be Solved in This Lab
+# Training Overview
 This lab shows you how to use Terraform to configure an organization, members, teams, and repositories in GitHub. This task is binding to real production needs – for instance, the DevOps team centrally manages the state of the GitHub repositories within their organization.
 
- 
-### Explanation of the Solution
-You will use Terraform with the GitHub provider to create 2 separate Terraform configurations:
- 1) Base configuration
- 2) Repos configuration
-After you’ve created the configuration, we will work on its optimization like using a data-driven approach and creating modules.
+In this lab, you will learn how to use Terraform to configure and manage a GitHub organization, including its members, teams, and repositories. This exercise addresses real-world production needs, such as enabling a DevOps team to centrally manage the state of GitHub repositories within their organization.
 
-As a result, at the end of this lab, you will get a managed by terraform GitHub organization shown in the image below.
+
+## Solution Approach
+
+Using Terraform with the GitHub provider, you will create and refine two separate configurations:
+
+1. Base Configuration: Establishes the foundational structure for the organization.
+1. Repository Configuration: Focuses on managing repository-specific settings.
+
+Once these configurations are set up, you will optimize them by adopting a data-driven approach and modularizing the code to improve maintainability and scalability.
+
+By the end of this lab, you will have a GitHub organization fully managed by Terraform, as illustrated in the image below.
 ![alt text](images/lab_diagram.png)
 
 ## PRE-REQUISITES
