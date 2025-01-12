@@ -62,7 +62,7 @@ By the end of this lab, you will have a GitHub organization fully managed by Ter
 
     Please use **underscore** Terraform resources naming, e.g. `my_resource` instead of `my-resource`.
 
-5. Create directory `./repos`, change current directory  to `./repos` and repeat the steps in [2].
+5. Copy `root.tf` and `variables.tf` files from `./base` to `./repos` folder. Run `terraform init` unders the `./repos` folder to initialize your configuration. 
 6. Install docker on your laptop.
 
 You are ready for the lab!
