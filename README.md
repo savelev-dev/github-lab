@@ -76,7 +76,7 @@ Create an organization settings resource with attributes:
 
 -	`billing_email`: `{some email}`
 -	`company`: `{You org name}`
--	`description`: `{You org name} organization for github Terraform Lab`
+-	`description`: `{You org name} organization for GitHub terraform lab`
 -	`default_repository_permission`: `"read"`
 -	`members_can_create_repositories`: `false`
 -	`members_can_create_public_repositories`: `false`
