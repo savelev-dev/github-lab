@@ -408,9 +408,10 @@ Learn about the [terraform import](https://www.terraform.io/docs/cli/import/inde
 You are going to import a new resource (repository `tf-lab-spa`) to your state.
 Hint: Keep in mind that there are 3 instances: GitHub resource, Terraform state file which store some state of that resource, and Terraform configuration which describe resource. "Importing a resource" is importing its attributes into a Terraform state. Then you have to add said resource to the destination configuration (this action is not automated).
 
-Ensure that the current directory is  `./repos`. Use file `imported_repository.tf`.
 
-- Create a public GitHub repository in the created GitHub organization via GitHub WebUI (`name="tf-lab-spa"`).
+As a pre-requirement create a public GitHub repository in your GitHub organization via GitHub WebUI (`name="tf-lab-spa"`).
+
+Ensure that the current directory is  `./repos`. Use file `imported_repository.tf`.
 - Add a new resource `github_repository` `tf_github_lab_spa_repository` to the `repos` configuration.
 - Run `terraform plan` to see your changes but do not apply changes.
 - Import `tf_github_lab_spa_repository` repository to the `repos` state.
