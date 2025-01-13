@@ -239,7 +239,7 @@ Learn about [terraform remote state data source](https://www.terraform.io/docs/l
 
 Add remote state resources to your configuration to be able to import output resources:
 
--	Create a data resource for base remote state. (backend="local")
+-	Create a data resource for the `base` state. (backend="local")
 
 Store all resources from this task in the `data.tf` file.
 
