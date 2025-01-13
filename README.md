@@ -196,6 +196,8 @@ Create the following repository with attributes:
 - `visibility`: `"private"`
 - `auto_init` : `true`
 
+**Note**: Please name this terraform resource(not repository in GitHub) as "tf_github_lab_base_repository". This will be need for the future task.
+
 Store all resources from this task in the `base_repository.tf` file.
 
 Run `terraform validate`  and `terraform fmt` to check if your configuration is valid and fits to a canonical format and style. Do this each time before applying  your changes.
