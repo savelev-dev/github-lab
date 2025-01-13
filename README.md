@@ -293,8 +293,6 @@ Apply your changes when you're ready.
     
 # Working with Terraform state
 
-**Mandatory**: Please do not proceed to [TASKS  9-15] until your have finished previous tasks. Once completed please remove `.gitlab-ci.yml` from your repository and merge this change. This will disable the proctor checks but store the progress for previous tasks. Proctor cannot access to the resources in non-local state therefore it should be disabled.
-
 In this section, we will delve into Terraform state management and Terraform backends. A backend serves as the repository where Terraform  stores its state files. The default backend is local, meaning that it stores the state file on your local disk. To enable effective collaboration with your colleagues, you should consider utilizing a [remote backend](https://developer.hashicorp.com/terraform/language/settings/backends/remote).
 
 Switching the backend is a straightforward process accomplished by [re-initializing](https://developer.hashicorp.com/terraform/cli/commands/init#backend-initialization) with Terraform.
