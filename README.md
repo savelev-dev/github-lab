@@ -194,6 +194,7 @@ Create the following repository with attributes:
 - `description`: `"{OrgName}, repository for DevOps team"`
 - `vulnerability_alerts`: `true`
 - `visibility`: `"private"`
+- `auto_init` : `true`
 
 Store all resources from this task in the `base_repository.tf` file.
 
@@ -201,6 +202,8 @@ Run `terraform validate`  and `terraform fmt` to check if your configuration is 
 Run `terraform plan` to see your changes.
 
 Apply your changes when ready.
+
+**Hint**: You might need to fix something that prevent Terraform from apply chganges.
 
 ### Definition of DONE:
 
