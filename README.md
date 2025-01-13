@@ -334,6 +334,8 @@ You are going to move (rename) previously created resource.
 
 Hint: The purpose of the `terraform state mv` command in Terraform is to move or rename resources within a Terraform state. This is useful for reorganizing resources within your infrastructure, for example, if you want to rename a resource or move it from one module to another. When you move a resource, Terraform updates the state file to reflect the new location or name of the resource, and generates a plan to update the infrastructure to match the new state. The terraform mv command should be used with care, as it can impact existing infrastructure and potentially result in changes to your environment.
 
+### 9.1 Rename existing resources:
+
 - Change the created GitHub repository `tf-lab-devops` resource name in the configuration file.
 
   Example:
@@ -356,6 +358,9 @@ Example:
   terraform state mv github_repository.tf_github_lab_base_repository github_repository.tf_github_lab_devops_repository
   ```
 
+### 9.2 Move resources between states:
+- Using one of the described approaches move  `github_repository.tf_github_lab_devops_repository` resource from `base` to `repos` terraform state.
+
 - Run `terraform plan` on both configurations and observe the changes. 
 
   Hint: there should not be any changes detected (no resource creation or deletion in case of correct resource move).
@@ -365,7 +370,7 @@ Run `terraform validate` and `terraform fmt` to check if your configuration is v
 ### Definition of DONE:
 
 - Terraform moved resources with no errors
-- GitHub repository is created as expected (check GitHub WebUI)
+- GitHub repository is inplace (check GitHub WebUI)
 
 
 ## TASK 10 - Move state to Postgres database
