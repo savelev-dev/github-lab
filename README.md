@@ -406,18 +406,19 @@ Run `terraform plan` to see your changes and re-apply your changes if needed.
 Learn about the [terraform import](https://www.terraform.io/docs/cli/import/index.html) command.
 
 You are going to import a new resource (repository `tf-lab-spa`) to your state.
+**Note**: SPA - Single Page Application
+
 Hint: Keep in mind that there are 3 instances: GitHub resource, Terraform state file which store some state of that resource, and Terraform configuration which describe resource. "Importing a resource" is importing its attributes into a Terraform state. Then you have to add said resource to the destination configuration (this action is not automated).
 
 
 As a pre-requirement create a public GitHub repository in your GitHub organization via GitHub WebUI (`name="tf-lab-spa"`).
 
 Ensure that the current directory is  `./repos`. Use file `imported_repository.tf`.
-- Add a new resource `github_repository` `tf_github_lab_spa_repository` to the `repos` configuration.
+- Add a new resource `github_repository` `tf_github_lab_spa_repository` to the `repos` configuration. You can use settings from Task 8 or just set mandatory parameters. If settings not match to the existing repo settings it will require to apply the changes after import(this is expected changes).
 - Run `terraform plan` to see your changes but do not apply changes.
 - Import `tf_github_lab_spa_repository` repository to the `repos` state.
 - Run `terraform plan` again to ensure that import was successful.
-
-**Note**: SPA - Single Page Application
+- If your repo configuration differ from the existing run `terraform apply` to align them.
 
 Run `terraform validate` and `terraform fmt` to check if your configuration is valid and fits to a canonical format and style.
 
