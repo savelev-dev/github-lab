@@ -21,9 +21,9 @@ jobs:
 
     - name: Install OWASP ZAP
       run: |
-        wget https://github.com/zaproxy/zaproxy/releases/download/v2.9.0/ZAP_2.9.0_Linux.tar.gz
-        tar -xvzf ZAP_2.9.0_Linux.tar.gz
-        echo "ZAP_PATH=$PWD/ZAP_2.9.0" >> $GITHUB_ENV
+        wget https://github.com/zaproxy/zaproxy/releases/download/v2.16.0/ZAP_2.16.0_Linux.tar.gz
+        tar -xvzf ZAP_2.16.0_Linux.tar.gz
+        echo "ZAP_PATH=$PWD/ZAP_2.16.0" >> $GITHUB_ENV
 
     - name: Use Node.js 18.x
       uses: actions/setup-node@v3
