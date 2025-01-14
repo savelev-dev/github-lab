@@ -431,6 +431,14 @@ Learn about [terraform data sources](https://www.terraform.io/docs/language/data
 
 In this task we are going to use a data driven approach instead to use remote state data source.
 
+#### base configuration
+
+Change the current directory to `./base`
+
+Use a data source to request the info about `tf-lab-app` repository. This datasource will be required in the next tasks.
+
+Store all resources from this task in the `data.tf` file.
+
 #### repos configuration
 Change the current directory to `./repos`
 
