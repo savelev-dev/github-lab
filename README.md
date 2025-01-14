@@ -436,7 +436,7 @@ Change the current directory to `./repos`
 
 Refine your configuration:
 
-- Use a data source to request the following resources: `organization_id`, `organization_teams`, `security_manager_team_slug`.
+- Use a data source to request the following resources: `organization_id`, `organization_teams`.
 
 Hint: These data sources should replace remote state outputs, therefore you can delete `data "terraform_remote_state" "base"` resource from your current state and the `outputs.tf` file from the `base` configuration. **Don't forget to replace references with a new data sources.**
 Hint: run `terraform refresh` command under `base` configuration to reflect changes.
